@@ -95,3 +95,35 @@ erDiagram
         string comprovante_url
         int nsr "Sequential Audit Number"
     }
+```
+
+---
+
+## 🛠️ Technical Stack & Tooling
+
+### Backend Services
+* **Framework:** C# .NET 8.0 ASP.NET Core Web API
+* **Database:** PostgreSQL 15 with Entity Framework Core 8.0
+* **Cryptography & PDF:** BouncyCastle 2.6.2, QuestPDF 2025.7
+* **Documentation:** Swagger/OpenAPI
+
+### Mobile Client
+* **Framework:** React Native 0.79 / Expo ~53.0
+* **Routing & State:** Expo Router, Custom React Contexts (Auth, Badges, Notifications)
+* **Maps:** React Native Maps for real-time geolocation validation.
+
+### DevOps & Infrastructure
+* **Containerization:** Fully Dockerized environments (Docker & Docker Compose).
+* **Network:** Nginx configured as a reverse proxy.
+
+---
+
+## 🧠 Key Engineering Decisions & Challenges Solved
+
+### The "Forgotten Punch-In" Challenge (Data Structure Optimization)
+**Problem:** In workforce management, employees often forget to clock in, requiring HR to insert retroactive time-logs. In standard arrays, inserting data in the middle of a chronological timeline causes massive data shifting ( $O(n)$ overhead ).
+
+**Solution:** The system's audit trail and history synchronization were architected to handle retroactive insertions smoothly, utilizing indexing and relational mapping that bypasses the need for contiguous memory reallocation, ensuring rapid data retrieval ( $O(1)$ ) for HR audits.
+
+### Resilient Offline-First Synchronization
+To handle adverse connectivity conditions, the React Native app is structured with decoupled services (`services/api.ts` and `services/storage.ts`). This ensures that a time-tracking request and its geolocation payload are safely cached locally and synchronized with the PostgreSQL database only when a stable connection is verified.
