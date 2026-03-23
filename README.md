@@ -127,3 +127,15 @@ erDiagram
 
 ### Resilient Offline-First Synchronization
 To handle adverse connectivity conditions, the React Native app is structured with decoupled services (`services/api.ts` and `services/storage.ts`). This ensures that a time-tracking request and its geolocation payload are safely cached locally and synchronized with the PostgreSQL database only when a stable connection is verified.
+
+---
+
+## 🚀 My Technical Contributions
+
+As a core developer, I took full-stack ownership of critical business modules, engineering them from the PostgreSQL database schema up to the React Native mobile interfaces:
+
+* **Retroactive Punch Approval Workflow:** Architected the complete state-machine for manual punch inclusions. Developed the C# REST endpoints and mobile screens that allow employees to request missed punches, track their status (Pending/Approved/Rejected), and provided administrators with a secure validation dashboard.
+* **Time Mirror (Espelho de Ponto) & Dashboard:** Engineered the core employee home screen and monthly aggregation dashboard. Optimized the backend payload to compile chronological time-logs and calculate daily balances efficiently.
+* **Digital Receipt Management:** Built the endpoints and mobile interfaces to fetch, list, and display the cryptographically signed PDF receipts, interfacing seamlessly with the application's object storage system.
+* **Operational Domain Modules (Schedules & Holidays):** Designed and implemented the complete CRUD lifecycle for Work Schedules (Escalas) and Holidays. Handled complex date-time relational mapping in Entity Framework Core to ensure the system accurately identifies expected working hours and exceptions.
+* **Employee Management System:** Developed the frontend forms and backend validation logic for employee onboarding and profile editing, ensuring robust state management in React Native and strict data integrity in the database.
